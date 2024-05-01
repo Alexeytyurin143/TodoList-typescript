@@ -1,6 +1,6 @@
 import { Checkbox, List, Typography } from 'antd'
 import { useAppDispatch } from '../../hooks/reduxHooks'
-import { removeTodo, toggleComplete } from '../../store/todoSlice'
+import { deleteTodo, toggleStatus } from '../../store/todoSlice'
 import { CloseOutlined } from '@ant-design/icons'
 
 interface TodoItemProps {
@@ -16,10 +16,10 @@ export const TodoItem = ({ id, title, completed }: TodoItemProps) => {
 		<List.Item style={{ gap: '10px', margin: '0 10px' }}>
 			<Checkbox
 				checked={completed}
-				onChange={() => dispatch(toggleComplete(id))}
+				onChange={() => dispatch(toggleStatus(id))}
 			/>
 			<Typography.Text>{title}</Typography.Text>
-			<CloseOutlined onClick={() => dispatch(removeTodo(id))} />
+			<CloseOutlined onClick={() => dispatch(deleteTodo(id))} />
 		</List.Item>
 	)
 }
